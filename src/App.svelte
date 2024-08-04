@@ -2,30 +2,64 @@
   import svelteLogo from "./assets/svelte.svg";
   import viteLogo from "/vite.svg";
   import Counter from "./lib/Counter.svelte";
+import Comp from './lib/comp.svelte'
+
   // import app from './main';
   export let name;
   let child_height = 120;
+  let val =20;
 </script>
 
 <main>
   {name}
   <div>
 
-  <h1>Vite + Svelte</h1>
+<Comp --marginleft={val}/>
+<Comp --marginleft={val+25}/>
 
+ 
+<input type="number" bind:value={val}>
   <div class="card">
     <Counter />
   </div>
 
   <div class="parent" style="height: --child_height;">
-    <div style='height:{child_height}%' class="child1">1</div>
+    <div class="child1">1</div>
     <div class="child2">2</div>
     <div class="hght" style='width:25%'>3</div>
 
   </div>
+
+
+<div style='--child-height: {val};padding:5px; min-width: 50px;min-height:50px;border:1px solid silver;' class ='container'>
+<div class="zero">0</div>
+  <div class='one' style='padding:5px; width: 100%;height:100%'>222</div>
+  <div class='one' style='padding:5px; width: 100%;height:100%'>222</div>
+
+</div>
+
+
+
 </main>
 
 <style>
+
+.container {
+  --main-bg-color: cornflowerblue;
+   --mymargin:30;
+}
+
+/* For each class, set some colors */
+.zero{
+  height: calc(var(--child-height)*1px);
+}
+.one {
+  background-color: var(--main-bg-color);
+  margin: calc(var(--child-height)+1px);
+
+}
+
+
   .parent {
     display: flex;
     align-items: flex-end;
